@@ -1,6 +1,6 @@
-# Aboard desktop app
+# Healthy Astronauts desktop app
 
-The full onboard version of Aboard: a Windows app with a body map, NASA baselines, AI-assisted entries, a mood sticker and 60-day trends. It runs completely offline.
+The full onboard version of Healthy Astronauts (the file is `Aboard.exe`): a Windows app with a body map, NASA baselines, AI-assisted entries, a mood sticker and 60-day trends. It runs completely offline.
 
 ## Run it
 

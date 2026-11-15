@@ -1,6 +1,6 @@
 # Healthy Astronauts: AI (SI) declaration and sources
 
-**Project:** Healthy Astronauts. The app is called **Aboard**.
+**Project:** Healthy Astronauts (Windows desktop app `Aboard.exe` and website https://34-88-27-31.sslip.io)
 **Team SolutionFinders:** Mohammad Pourshahabadi, Parisa Aghaei, Kazi Rabiul Alam Nayan
 **Challenge:** NASA Space Apps Challenge 2026: *Create Health Monitoring Software for Astronauts on Space Missions*
 
@@ -16,7 +16,7 @@ The Space Apps rules allow Super Intelligence (SI) tools but ask teams to say cl
 | **Presentation** (7-slide demo deck) | **Anthropic Claude** | Drafted and laid out the slides from our project and screenshots | This declaration, slide 7 and the PDF/PPTX file properties |
 | **In-app assistant** (feature of the product) | **Llama 3.2 3B** (Meta), with **Gemma 3 4B** (Google) as a fallback, run locally with **Ollama** | Reads typed entries, explains results in plain language, answers health questions. It never sets the green, yellow or red status. Rules do that. | Labelled "Local AI" in the interface |
 
-No NASA logos, flags or mission identifiers were generated or used in any SI-generated content. No real astronaut records are used.
+No NASA logos, flags or mission identifiers were generated or used in any SI-generated content. No real astronaut records are used. In-app messages that a flight surgeon or psychologist "has been notified" are simulated: nothing is sent.
 
 ## NASA data and resources
 

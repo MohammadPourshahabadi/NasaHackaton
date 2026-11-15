@@ -1,6 +1,6 @@
-# Aboard website
+# Healthy Astronauts website
 
-The website version of Aboard. It shows the same rules, NASA baselines and local AI as the desktop app, running on one server so judges and visitors can try everything in a browser. No install or login.
+The website version of Healthy Astronauts. Live at **https://34-88-27-31.sslip.io**. It shows the same rules, NASA baselines and local AI as the desktop app, running on one server so judges and visitors can try everything in a browser. No install or login.
 
 ## How it works
 
@@ -19,6 +19,7 @@ The website version of Aboard. It shows the same rules, NASA baselines and local
                                            Ollama + Llama 3.2 3B (localhost only)
 ```
 
+- **What you can do there:** pick a crew member; see the glowing body map, the questionnaire status, the mood sticker and the coach card with animations (nap, measure again, meditate and music); add an entry by typing or by photo; tap any tile or chart to see its trend and add a reading; take the daily questionnaire; ask health questions.
 - **Rules decide the status.** The website calls the same `analysis.py`, `nasa_reference.py` and `baseline.py` as the desktop app.
 - **The AI only reads and explains.** `/api/extract` turns a sentence into readings. `/api/explain` and `/api/ask` stream plain-language text as it is written.
 - **Visitors can't break the demo.** New entries are kept per browser (a cookie) in memory, on top of the read-only demo history. Restarting the server resets them.

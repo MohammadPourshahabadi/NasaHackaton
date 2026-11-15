@@ -80,7 +80,7 @@ class Mission(tk.Tk):
         for name in USERS:
             if name not in journal.profiles():
                 journal.add_profile(name)
-        self.title('Aboard • Crew health')
+        self.title('Healthy Astronauts • Crew health')
         self.geometry('1120x790')
         self.minsize(940,730)
         self.configure(bg=NAVY)
@@ -134,8 +134,8 @@ class Mission(tk.Tk):
         sky.pack(fill='both',expand=True)
         body=tk.Frame(sky,bg='#10232b')
         card_id=sky.create_window(0,0,window=body)
-        tk.Label(body,text='ABOARD',bg='#10232b',fg=MINT,font=('Segoe UI',11,'bold')).pack(pady=(8,0))
-        tk.Label(body,text='Crew health',bg='#10232b',fg=FG,font=('Segoe UI',26,'bold')).pack()
+        tk.Label(body,text='TEAM SOLUTIONFINDERS',bg='#10232b',fg=MINT,font=('Segoe UI',11,'bold')).pack(pady=(8,0))
+        tk.Label(body,text='Healthy Astronauts',bg='#10232b',fg=FG,font=('Segoe UI',26,'bold')).pack()
         tk.Label(body,text='Offline health monitor for long missions',bg='#10232b',fg=MUTED,
                  font=('Segoe UI',10)).pack(pady=(2,22))
         tk.Label(body,text='Who is checking in?',bg='#10232b',fg=FG,font=('Segoe UI',13,'bold')).pack(pady=(0,10))
@@ -183,7 +183,7 @@ class Mission(tk.Tk):
         bar.delete('all')
         bar.art=ImageTk.PhotoImage(starfield(w,h,seed=3),master=bar)
         bar.create_image(0,0,image=bar.art,anchor='nw')
-        title=bar.create_text(28,30,text='Aboard',fill=FG,font=('Segoe UI',24,'bold'),anchor='w')
+        title=bar.create_text(28,30,text='Healthy Astronauts',fill=FG,font=('Segoe UI',24,'bold'),anchor='w')
         bar.create_text(bar.bbox(title)[2]+14,33,text=self.user.title(),fill=MINT,font=('Segoe UI',15,'bold'),anchor='w')
         bar.create_text(28,57,text=f'Crew health monitor · offline · {date.today():%A %d %B}',fill=MUTED,
                         font=('Segoe UI',9),anchor='w')
@@ -807,8 +807,6 @@ class Mission(tk.Tk):
                 messagebox.showerror('Entry could not be saved',str(error),parent=win); return
             win.destroy()
         bottom=tk.Frame(panel,bg=NAVY); bottom.pack(fill='x',pady=(14,0))
-        help_button=pill_button(bottom,'I need help now',lambda:save(True),fill='#5a2b33',hover='#7a3843')
-        help_button.pack(side='left')
         action(bottom,'Save entry',save,True,width=150).pack(side='right')
         notes.focus_set() if not repeat_fields else None
 
@@ -901,7 +899,7 @@ class Mission(tk.Tk):
     def questionnaire_result(self,record):
         check=record['wellbeing']
         win=tk.Toplevel(self)
-        win.title('Aboard · Wellbeing result')
+        win.title('Healthy Astronauts · Wellbeing result')
         win.transient(self)
         panel=ttk.Frame(win,padding=26)
         panel.pack(fill='both',expand=True)
@@ -1016,7 +1014,7 @@ class Mission(tk.Tk):
     def assessment(self,record):
         assessment=record['assessment']
         win=tk.Toplevel(self)
-        win.title('Aboard · Entry review')
+        win.title('Healthy Astronauts · Entry review')
         win.transient(self)
         if assessment['status']=='green':
             panel=ttk.Frame(win,padding=26)

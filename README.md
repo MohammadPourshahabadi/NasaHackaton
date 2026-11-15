@@ -1,19 +1,19 @@
-# Healthy Astronauts: the Aboard crew health app
+# Healthy Astronauts: crew health, checked on board
 
 **Team SolutionFinders** (Mohammad Pourshahabadi, Parisa Aghaei, Kazi Rabiul Alam Nayan) · **NASA Space Apps Challenge 2026** · [Create Health Monitoring Software for Astronauts on Space Missions](https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/)
 
-On a long mission, astronauts often have to notice health changes themselves. Earth may be minutes away by radio. Aboard turns a quick daily check-in into a clear answer: **how am I compared with my baseline, and what should I do next?**
+On a long mission, astronauts often have to notice health changes themselves. Earth may be minutes away by radio. Healthy Astronauts turns a quick daily check-in into a clear answer: **how am I compared with my baseline, and what should I do next?**
 
 - **Log it your way.** Type a sentence ("heart beat is 68, slept 6 hours"), photograph a device screen, or answer six wellbeing questions. A local AI model fills in the numbers for you.
 - **Compare with NASA data.** Heart rate, blood pressure, serum labs and sleep are checked against NASA ranges from Apollo AP004, Apollo AP005 and NASA Standard Measures. Measurements without a NASA range use a clearly labelled simulated preflight baseline.
-- **Know what to do.** Simple, visible rules give green, yellow or red with next steps: repeat a measurement, do a vision check for possible SANS, or call the crew medical officer. The AI explains in plain words but never changes the result.
+- **Know what to do.** Simple, visible rules give green, yellow or red with next steps and short animations: measure again correctly, take a nap after short sleep, or, after a high-strain questionnaire, talk with a psychologist and try meditation or music. The AI explains in plain words but never changes the result. ("Notified" messages are simulated in this demo.)
 - **Works offline.** The desktop app and its local AI run on a single computer, with no cloud service needed. The website version runs the same code on a server so judges can try it.
 
 ## What's in this repository
 
 | Folder | What it is | Start here |
 | --- | --- | --- |
-| [`app/`](app/) | The **desktop app** for Windows, the full onboard experience | [app/README.md](app/README.md) |
+| [`app/`](app/) | The **desktop app** for Windows (`Aboard.exe`), the full onboard experience | [app/README.md](app/README.md) |
 | [`website/`](website/) | The **website version**, the same rules and local AI running on a server so anyone can try it in a browser | [website/README.md](website/README.md) |
 | [`presentation/`](presentation/) | The 7-slide demo deck | [Aboard-Demo.pdf](presentation/Aboard-Demo.pdf) |
 | [`docs/`](docs/) | NASA data sources, dataset inventory, the original NASA files we used, and our **AI declaration** | [docs/README.md](docs/README.md) · [AI-DECLARATION.md](docs/AI-DECLARATION.md) |
@@ -47,4 +47,4 @@ Details, file locations and what we verified are in [docs/README.md](docs/README
 
 No NASA logos or branding appear in SI-generated content, and no real astronaut records are used. The full declaration and every source are in **[docs/AI-DECLARATION.md](docs/AI-DECLARATION.md)**.
 
-Aboard is a hackathon prototype, not a medical device.
+Healthy Astronauts is a hackathon prototype, not a medical device.

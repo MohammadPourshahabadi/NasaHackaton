@@ -362,7 +362,7 @@ REGIONS = ('General', 'Head', 'Eyes', 'Chest', 'Left arm', 'Right arm', 'Abdomen
 REGION_WORDS = (
     (r'\b(?:eyes?|vision|sight|blurr?y|seeing)\b', 'Eyes'),
     (r'\b(?:head|headache|forehead|migraine|dizz)', 'Head'),
-    (r'\b(?:chest|heart|palpitation|breath)', 'Chest'),
+    (r'\b(?:chest|palpitation|short of breath|breathless)', 'Chest'),
     (r'\bleft (?:arm|forearm|hand|elbow|wrist|shoulder|finger)', 'Left arm'),
     (r'\bright (?:arm|forearm|hand|elbow|wrist|shoulder|finger)', 'Right arm'),
     (r'\b(?:arm|forearm|hand|elbow|wrist|shoulder)', 'Left arm'),

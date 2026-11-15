@@ -266,7 +266,7 @@ class Handler(BaseHTTPRequestHandler):
                 finally:
                     LLM_SLOTS.release()
                 result['readings'] = {k: v for k, v in result['readings'].items() if k in LABELS}
-                result['engine'] = result['engine'].replace('on this device', 'on the Aboard server')
+                result['engine'] = result['engine'].replace('on this device', 'on the Healthy Astronauts server')
                 result['labels'] = {k: LABELS[k] for k in result['readings']}
                 result['comparisons'] = {k: compare(self.crew(data.get('crew')), k, v)['summary']
                                          for k, v in result['readings'].items()}
