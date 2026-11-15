@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "features": [
+    "sleep",
+    "fatigue",
+    "mood",
+    "pulse",
+    "schedule_change"
+  ],
+  "means": [
+    6.4885,
+    2.9858333333333333,
+    3.0083333333333333,
+    75.16541666666667,
+    0.28541666666666665
+  ],
+  "scales": [
+    1.4253015178083082,
+    1.3867705790392615,
+    1.4071000517218224,
+    16.38636793170029,
+    0.45161265821005897
+  ],
+  "weights": [
+    -1.1662885737555437,
+    1.4281560311401746,
+    -0.39951152838505927,
+    0.34971749565148325,
+    0.31330188746378346
+  ],
+  "bias": 0.24600091030758123,
+  "provenance": "Synthetic generator only. Flight and patient records were not used.",
+  "seed": 2026,
+  "training_examples": 2400,
+  "holdout_examples": 600,
+  "synthetic_holdout": {
+    "accuracy": 0.8017,
+    "brier": 0.1392
+  }
+}
