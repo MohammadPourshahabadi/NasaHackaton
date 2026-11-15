@@ -7,6 +7,7 @@
 #   sudo bash website/deploy/setup.sh                       # no domain yet: plain http://SERVER-IP
 set -euo pipefail
 
+export HOME="${HOME:-/root}"   # boot-time scripts run without HOME; ollama needs it
 DOMAIN="${1:-}"
 MODEL="${ABOARD_OLLAMA_MODEL:-llama3.2:3b}"
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
@@ -27,6 +28,7 @@ for i in $(seq 1 30); do curl -fs http://127.0.0.1:11434/api/tags >/dev/null && 
 ollama pull "$MODEL"
 
 echo "==> 3/5 Aboard web service"
+mkdir -p /var/lib/aboard && chown "$RUN_USER" /var/lib/aboard
 cat > /etc/systemd/system/aboard-web.service <<EOF
 [Unit]
 Description=Aboard website (NASA Space Apps 2026)
@@ -37,6 +39,8 @@ Wants=ollama.service
 User=$RUN_USER
 WorkingDirectory=$REPO/website
 Environment=ABOARD_OLLAMA_MODEL=$MODEL
+Environment=ABOARD_DATA_DIR=/var/lib/aboard
+Environment=HOME=/var/lib/aboard
 Environment=PYTHONIOENCODING=utf-8
 ExecStart=/usr/bin/python3 -B $REPO/website/server.py --host 127.0.0.1 --port 8080
 Restart=always
