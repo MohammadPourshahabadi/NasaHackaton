@@ -94,9 +94,16 @@ def today(sid, crew):
                       'kind': base['kind'], 'badge': base['badge'], 'low': base['low'], 'high': base['high'],
                       'baseline': base['value'], 'range_text': base['range_text'], 'source': base['source'],
                       'summary': comparison['summary'] if comparison else 'No reading yet'})
+    today_iso = datetime.now().date().isoformat()
+    wellbeing = [r for r in records if r.get('wellbeing')]
+    latest_wb = wellbeing[-1] if wellbeing else None
     return {'crew': crew, 'tiles': tiles, 'mood': ai_core.mood_summary(records),
             'body': {site: site_level(status, keys) for site, keys in BODY_SITES.items()},
-            'entries': len(records)}
+            'entries': len(records),
+            'questionnaire_today': any(r['stamp'][:10] == today_iso for r in wellbeing),
+            'last_questionnaire': latest_wb['stamp'][:10] if latest_wb else None,
+            'wellbeing': ({k: latest_wb['wellbeing'].get(k) for k in ('scene', 'label', 'action')}
+                          | {'date': latest_wb['stamp'][:10]}) if latest_wb else None}
 
 
 def trends(sid, crew):

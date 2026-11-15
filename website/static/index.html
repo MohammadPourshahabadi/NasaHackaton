@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Healthy Astronauts · Aboard crew health</title>
-<meta name="description" content="Aboard: an offline health monitor that helps astronauts check their own health on long missions. NASA Space Apps 2026.">
+<title>Healthy Astronauts · crew health monitor</title>
+<meta name="description" content="Healthy Astronauts: a health monitor that helps astronauts check their own health against NASA baselines on long missions. NASA Space Apps 2026, Team SolutionFinders.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
@@ -15,8 +15,8 @@
 
 <header class="top">
   <div class="brand">
-    <span class="logo">Aboard</span>
-    <span class="tag">Crew health monitor · local AI</span>
+    <span class="logo">Healthy Astronauts</span>
+    <span class="tag">Crew health monitor · NASA baselines · local AI</span>
   </div>
   <nav class="crew" aria-label="Crew member">
     <button data-crew="mo" class="pill on">Mo</button>
@@ -53,20 +53,21 @@
             <button class="site" data-site="calf_right" style="left:61.9%;top:78%">Right calf</button>
           </figure>
         </div>
-        <div class="legend"><i class="ok"></i>OK <i class="watch"></i>Check <i class="alert"></i>Urgent <i class="none"></i>No data</div>
+        <div class="legend"><i class="ok"></i>OK <i class="watch"></i>Off baseline <i class="alert"></i>Urgent <i class="none"></i>No data</div>
       </article>
 
       <article class="card actions-card">
         <h2>Today</h2>
+        <div id="quiz-status" class="quiz-status"></div>
         <button class="big primary" id="open-entry">＋ New entry</button>
         <button class="big" id="open-ask">Ask me about your health</button>
-        <button class="big" id="open-quiz">Daily questionnaire</button>
         <div id="sticker" class="sticker"></div>
+        <div id="coach" class="coach"></div>
       </article>
 
       <article class="card readings-card">
         <h2>Readings vs baseline</h2>
-        <p class="key"><b class="badge nasa">NASA</b> range from NASA data · <b class="badge sim">SIM</b> simulated preflight baseline</p>
+        <p class="key"><b class="badge nasa">NASA</b> baseline from NASA data · <b class="badge sim">SIM</b> generated (simulated) baseline</p>
         <div id="tiles" class="tiles"></div>
       </article>
     </div>
@@ -74,19 +75,34 @@
 
   <!-- TRENDS -->
   <section id="trends" class="view">
-    <h2 class="section-title">Trends vs baseline</h2>
-    <p class="muted">Last 60 days. The shaded band is the baseline range, the dashed line the NASA or preflight baseline. Points outside the band turn yellow.</p>
+    <div class="trend-head">
+      <div>
+        <h2 class="section-title">Trends vs baseline</h2>
+        <p class="muted">Last 60 days. Shaded band = baseline range · dashed line = baseline · <span class="dot-ok">●</span> inside range · <span class="dot-off">●</span> outside range. Click a chart to add a reading.</p>
+      </div>
+      <div class="trend-filter">
+        <button class="chip on" data-group="all">All</button>
+        <button class="chip" data-group="vital">Vital signs</button>
+        <button class="chip" data-group="labs">Blood labs</button>
+        <button class="chip" data-group="body">Muscle & eyes</button>
+      </div>
+    </div>
     <div id="charts" class="charts"></div>
   </section>
 
   <!-- ABOUT -->
   <section id="about" class="view prose">
-    <h2 class="section-title">How Aboard works</h2>
-    <p>On long missions astronauts must spot health changes themselves, often minutes away from Earth by radio. Aboard turns a quick daily check-in into a clear answer: <b>how am I compared with my baseline, and what should I do next?</b></p>
+    <h2 class="section-title">How Healthy Astronauts works</h2>
+    <p>On long missions astronauts must spot health changes themselves, often minutes away from Earth by radio. Healthy Astronauts turns a quick daily check-in into a clear answer: <b>how am I compared with my baseline, and what should I do next?</b></p>
     <div class="cols">
-      <div class="card"><h3>1 · Log it your way</h3><p>Type a sentence, take a photo of a device screen, or answer the six-question wellbeing check. A local language model pulls out the readings and the body area. Every number must appear in what you wrote or on the screen, so the model cannot invent values.</p></div>
-      <div class="card"><h3>2 · Compare with a baseline</h3><p>Heart rate, blood pressure, serum labs and sleep are compared with <b>NASA data</b>: Apollo AP005, Apollo AP004 and NASA Standard Measures. Where NASA has no published range (calf ultrasound and eye OCT), each crew member gets a clearly labelled <b>simulated</b> preflight baseline.</p></div>
-      <div class="card"><h3>3 · Act on it</h3><p>Transparent rules decide green, yellow or red and list the next steps, such as repeating a measurement, a vision check for possible SANS, or contacting the crew medical officer. The AI explains the result in plain words but never changes it.</p></div>
+      <div class="card"><h3>1 · Log it your way</h3><p>Type a sentence, photograph a device screen, or answer the six-question wellbeing check. A local language model pulls out the readings and the body area. A number is kept only if it appears in what you wrote or on the screen.</p></div>
+      <div class="card"><h3>2 · Compare with a baseline</h3><p>Every reading is placed on a bar with its baseline range. Readings outside the range turn red and move to <b>Needs attention</b>.</p></div>
+      <div class="card"><h3>3 · Act on it</h3><p>Transparent rules decide green, yellow or red and show the next step with an animation: repeat a measurement correctly, take a nap, or try meditation and music. The AI explains in plain words but never changes the result.</p></div>
+    </div>
+    <h3>What the NASA and SIM tags mean</h3>
+    <div class="tags-explain">
+      <div class="card"><b class="badge nasa big-badge">NASA</b><p>The baseline is <b>based on data published by NASA</b>: Apollo AP005 (heart rate, blood pressure), Apollo AP004 (serum sodium, potassium, creatinine, glucose) and the NASA Standard Measures sleep study. The range is the NASA mean ± 2 standard deviations.</p></div>
+      <div class="card"><b class="badge sim big-badge">SIM</b><p>The baseline is <b>generated (simulated) data</b>. NASA has not published a range for these measures (calf ultrasound area, eye OCT), so each crew member gets a random preflight value inside an approximate normal range. It is clearly not real data.</p></div>
     </div>
     <h3>NASA data used</h3>
     <ul>
@@ -97,7 +113,7 @@
       <li><a href="https://www.nasa.gov/humans-in-space/spaceflight-standard-measures-characterizing-how-humans-adapt-in-space/" target="_blank" rel="noopener">NASA Spaceflight Standard Measures</a>: topics of the daily wellbeing questions.</li>
     </ul>
     <h3>Super Intelligence (SI) disclosure</h3>
-    <p>Code was written with OpenAI Codex and Anthropic Claude Code from our instructions, then reviewed and tested by the team. Illustrations and animations were made with Codex and carry a visible <b>SI-generated</b> watermark. The demo crew (Mo, Parisa, Nayan) and their 60-day histories were generated with Claude as random values in normal human ranges, around the NASA means above. No real astronaut records are used. A local language model (Llama 3.2 3B via Ollama) reads entries, explains results and answers questions on this server; nothing is sent to an outside AI service. Full declaration: <a href="https://github.com/MohammadPourshahabadi/NasaHackaton/blob/main/docs/AI-DECLARATION.md" target="_blank" rel="noopener">AI-DECLARATION.md</a>.</p>
+    <p>Code was written with OpenAI Codex and Anthropic Claude Code from our instructions, then reviewed and tested by the team. Illustrations and animations were made with Codex and carry a visible <b>SI-generated</b> watermark. The demo crew (Mo, Parisa, Nayan) and their 60-day histories were generated with Claude as random values in normal human ranges, around the NASA means above. No real astronaut records are used. A local language model (Llama 3.2 3B via Ollama) reads entries, explains results and answers questions on this server; nothing is sent to an outside AI service. Messages such as "your flight surgeon has been notified" are simulated in this demo. Full declaration: <a href="https://github.com/MohammadPourshahabadi/NasaHackaton/blob/main/docs/AI-DECLARATION.md" target="_blank" rel="noopener">AI-DECLARATION.md</a>.</p>
     <p class="muted">Healthy Astronauts by Team SolutionFinders (Mohammad Pourshahabadi, Parisa Aghaei, Kazi Rabiul Alam Nayan). A hackathon prototype for the NASA Space Apps Challenge 2026, not a medical device. Source code: <a href="https://github.com/MohammadPourshahabadi/NasaHackaton" target="_blank" rel="noopener">GitHub</a>.</p>
   </section>
 </main>
@@ -105,7 +121,7 @@
 <!-- dialogs -->
 <dialog id="entry-dialog" class="sheet">
   <form method="dialog" class="sheet-head"><h2>New entry</h2><button class="x" aria-label="Close">✕</button></form>
-  <p class="muted">Type, or add a photo of a device screen. Aboard reads it as you type.</p>
+  <p class="muted">Type, or add a photo of a device screen. The readings appear as you type.</p>
   <textarea id="entry-text" rows="4" placeholder='e.g. "Heart beat is 68, slept 6 hours. BP 128/84. Small scrape on my left forearm."'></textarea>
   <div class="row">
     <label class="btn" for="entry-photo">Add photo</label>
@@ -114,14 +130,13 @@
   </div>
   <div id="photo-preview" class="photo-preview"></div>
   <div class="found">
-    <div class="found-head"><b>Aboard found</b><span id="entry-region" class="region">Body area: General</span></div>
+    <div class="found-head"><b>Readings found</b><span id="entry-region" class="region">Body area: General</span></div>
     <div id="found-rows"></div>
     <div class="row">
       <select id="add-metric"><option value="">Add a reading by hand…</option></select>
     </div>
   </div>
-  <div class="row end">
-    <button class="btn danger" id="entry-help">I need help now</button>
+  <div class="row end-right">
     <button class="btn primary" id="entry-save">Save entry</button>
   </div>
 </dialog>
@@ -147,15 +162,17 @@
   <form method="dialog" class="sheet-head"><h2>Daily questionnaire</h2><button class="x" aria-label="Close">✕</button></form>
   <p class="muted">1 = not at all · 10 = extreme</p>
   <div id="quiz-rows"></div>
-  <div class="row end"><button class="btn primary" id="quiz-save">Save questionnaire</button></div>
+  <div class="row end-right"><button class="btn primary" id="quiz-save">Save questionnaire</button></div>
 </dialog>
 
 <dialog id="trend-dialog" class="sheet wide">
   <form method="dialog" class="sheet-head"><h2 id="trend-title">Trend</h2><button class="x" aria-label="Close">✕</button></form>
-  <div id="trend-body" class="charts"></div>
+  <div id="trend-body" class="charts one"></div>
+  <form id="quick-add" class="quick-add"></form>
+  <div id="quick-result"></div>
 </dialog>
 
-<footer class="foot">Aboard · NASA Space Apps 2026 · prototype, not a medical device · images marked SI-generated were made with Codex · AI declaration on GitHub</footer>
+<footer class="foot">Healthy Astronauts · Team SolutionFinders · NASA Space Apps 2026 · prototype, not a medical device · images and animations marked SI-generated were made with Codex</footer>
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js" defer></script>
 <script src="/app.js" defer></script>
 </body>
