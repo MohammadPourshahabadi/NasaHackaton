@@ -1,4 +1,4 @@
-"""Stamp a visible 'SI-generated' watermark (Space Apps rule: Super Intelligence) on illustrations that were made with an image-generation model.
+"""Stamp a visible 'SI-generated' watermark (Space Apps rule: Super Intelligence) on illustrations that were made with OpenAI Codex (image generation).
 
 AI-generated assets in Aboard: anatomy-atlas.png, activity-frames.png, activity-man.png,
 activity-woman-extra.png, activity-man-extra.png, measurement-frames.png and equipment-atlas.png.

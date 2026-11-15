@@ -1,5 +1,7 @@
 """Reference baselines: NASA published values where they exist, simulated preflight values otherwise.
 
+SI declaration: simulated values generated with Anthropic Claude (random, inside normal ranges).
+
 Every measurement is compared with one baseline:
 * NASA   - mean and range (mean ± 2 SD) published by NASA. Source and study are shown in the app.
 * SIMULATED - no NASA range in the reviewed data. Each crew member gets a random preflight value inside an

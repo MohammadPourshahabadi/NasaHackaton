@@ -1,4 +1,8 @@
-"""Seed reproducible, explicitly simulated readings for the demo profiles."""
+"""Seed reproducible, explicitly simulated readings for the demo profiles.
+
+SI declaration: the simulated data design (random values inside normal human ranges, around NASA
+AP004/AP005 means) was generated with Anthropic Claude. No real astronaut records are used.
+"""
 from datetime import date, timedelta
 from math import sin, pi
 from random import Random
