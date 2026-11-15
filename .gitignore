@@ -5,3 +5,6 @@ __pycache__/
 LocalModels/
 archive/
 *.inspect.ndjson
+Dataset/
+website/data/
+.claude/

@@ -1,4 +1,4 @@
-"""Stamp a visible 'AI-generated' tag on illustrations that were made with an image-generation model.
+"""Stamp a visible 'SI-generated' watermark (Space Apps rule: Super Intelligence) on illustrations that were made with an image-generation model.
 
 AI-generated assets in Aboard: anatomy-atlas.png, activity-frames.png, activity-man.png,
 activity-woman-extra.png, activity-man-extra.png, measurement-frames.png and equipment-atlas.png.
@@ -9,7 +9,7 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
 
-LABEL = 'AI-generated'
+LABEL = 'SI-generated'
 
 
 @lru_cache(maxsize=8)
@@ -23,7 +23,7 @@ def _font(size):
 
 
 def ai_tag(image, corner='bottom-left'):
-    """Return a copy of a PIL image with a small semi-transparent 'AI-generated' pill in one corner."""
+    """Return a copy of a PIL image with a small semi-transparent 'SI-generated' pill in one corner."""
     tagged = image.convert('RGBA')
     width, height = tagged.size
     size = max(9, min(16, width // 18))

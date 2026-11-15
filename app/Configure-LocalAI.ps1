@@ -1,6 +1,10 @@
-﻿param([switch]$SkipPull)
+ï»¿param([switch]$SkipPull)
 $ErrorActionPreference = 'Stop'
 $root = Join-Path $PSScriptRoot 'LocalModels'
+if (-not (Test-Path -LiteralPath $root)) {
+    $parent = Join-Path (Split-Path $PSScriptRoot -Parent) 'LocalModels'
+    if (Test-Path -LiteralPath $parent) { $root = $parent }
+}
 $portable = Get-ChildItem -LiteralPath (Join-Path $root 'Ollama') -Filter ollama.exe -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
 $installed = Join-Path $env:LOCALAPPDATA 'Programs/Ollama/ollama.exe'
 $command = Get-Command ollama.exe -ErrorAction SilentlyContinue

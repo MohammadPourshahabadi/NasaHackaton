@@ -48,7 +48,7 @@ def build(source, runtime):
     payload = STAGING / 'aboard-payload.zip'
     modules = ('desktop.py', 'mission.py', 'medical_followup.py', 'demo_journal.py', 'nasa_reference.py', 'polish.py', 'anatomy-atlas.png', 'credentials.py', 'aboard.py', 'motion.py', 'analysis.py', 'local_model.json', 'assistants.py', 'quality.py',
                'demo_scan.png', 'crew.py', 'avatar3d.py', 'dialogue.py', 'voice.py', 'cloud_agent.py', 'cloud_capture.py', 'storage.py',
-               'wellbeing_ui.py', 'equipment-atlas.png', 'baseline.py', 'ai_label.py')
+               'wellbeing_ui.py', 'equipment-atlas.png', 'baseline.py', 'ai_label.py', 'ai_core.py')
     with ZipFile(payload, 'w', ZIP_DEFLATED) as archive:
         for name in ('measurement_gallery.py', 'measurement-frames.png', 'activity_gallery.py', 'activity-frames.png', 'activity-man.png',
                      'activity-woman-extra.png', 'activity-man-extra.png'):
