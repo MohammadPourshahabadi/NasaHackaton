@@ -1,6 +1,6 @@
 # Space Apps submission: copy and paste
 
-Ready-to-paste text for each field of the project form. Fill in the link marked **TODO** once the website is live.
+Ready-to-paste text for each field of the project form.
 
 ---
 
@@ -15,7 +15,7 @@ https://github.com/MohammadPourshahabadi/NasaHackaton/blob/main/presentation/Abo
 *(7 slides, including the title. GitHub shows the PDF without a login.)*
 
 ## Project *(link)*
-**TODO: http://34.88.27.31 (or https://34-88-27-31.sslip.io once HTTPS is on)**
+https://34-88-27-31.sslip.io
 *(If the website isn't live in time, use the GitHub repository instead: https://github.com/MohammadPourshahabadi/NasaHackaton)*
 
 ## Project Details

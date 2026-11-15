@@ -20,7 +20,7 @@ On a long mission, astronauts often have to notice health changes themselves. Ea
 
 ## Try it in 2 minutes
 
-- **In a browser:** open the live website (link on our Space Apps project page) and pick Mo, Parisa or Nayan.
+- **In a browser:** open **https://34-88-27-31.sslip.io** and pick Mo, Parisa or Nayan. AI answers take up to about 20–30 seconds because the model runs on a CPU server.
 - **On Windows:** download [`app/release/Aboard.exe`](app/release/Aboard.exe) and double-click it. For the AI features, follow the 3 steps in [app/README.md](app/README.md#turn-on-the-local-ai-optional).
 
 ## NASA data we use
