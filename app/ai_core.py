@@ -200,16 +200,23 @@ def explain_entry(record, model, on_text=None):
             except (OSError, ValueError):
                 pass
     wellbeing = record.get('wellbeing')
+    # Internal rule notes such as "did not trigger the follow-up rules" are not findings; never show them to the model.
+    findings = [plain(text) for text in assessment.get('rationale', []) if 'did not trigger' not in text]
+    readings = describe_readings(facts)
+    if wellbeing:
+        high = [k.replace('_', ' ') for k, v in wellbeing['ratings'].items() if v >= 8]
+        findings.insert(0, f"Daily questionnaire: {wellbeing['label'].lower()}"
+                           + (f" (rated 8 or more: {', '.join(high)})" if high else '')
+                           + '. Recommended next step: ' + wellbeing.get('action', ''))
     content = {
         'status': assessment.get('status') or ('wellbeing check-in' if wellbeing else ''),
-        'result_title': assessment.get('title'),
-        'readings': describe_readings(facts),
+        'result_title': assessment.get('title') if readings else 'Daily wellbeing questionnaire',
+        'readings': readings or 'No physical readings were entered in this check-in.',
         'previous_readings': {LABELS[k][0]: v for k, v in assessment.get('previous_readings', {}).items() if k in LABELS},
         'astronaut_notes': facts.get('notes', ''),
-        'most_important_finding': plain((assessment.get('rationale') or [''])[0]),
-        'other_findings': [plain(text) for text in assessment.get('rationale', [])[1:4]
-                           if 'did not trigger' not in text],
-        'next_steps_already_shown': assessment.get('actions', [])[:3],
+        'most_important_finding': findings[0] if findings else '',
+        'other_findings': findings[1:4],
+        'next_steps_already_shown': ([wellbeing['action']] if wellbeing else []) + assessment.get('actions', [])[:3],
         'wellbeing': {'label': wellbeing['label'], 'ratings_1_to_10': wellbeing['ratings']} if wellbeing else None,
     }
     instructions = (
